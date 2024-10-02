@@ -1,22 +1,9 @@
-version: '3.8'
-
 services:
   countryapi:
     build:
-      context: .  # carpeta actual
+      context: .  # Carpeta actual de Dockerfile
       dockerfile: Dockerfile
     ports:
-      - "8080:8080"
+      - "8080:8080"  # exponer puerto 8080
     volumes:
-      - ./data:/app/data  #para persistencia de datos
-
-# para construir y ejecutar la aplicación
-#lanzar -> docker-compose up --build
-
-#acceder a la API -> http://localhost:8080/+path
-
-#Para volver a lanzar el contenedor y acceder a los mismos registros.
-#docker-compose up
-
-#para apagar el contenedor
-##docker-compose down
+      - ./data:/app/data  # persistencia de datos

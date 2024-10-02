@@ -3,20 +3,22 @@ spring:
     name: countryapi
 
   datasource:
-    url: jdbc:h2:file:./data/testdb
+    url: jdbc:h2:file:/app/data/testdb
     driver-class-name: org.h2.Driver
     username: sa
     password:
 
     h2:
       console:
-        enabled: true  # para cceso a la consola H2
-
-    jpa:
+        enabled: true  # para acceso a la consola H2
+        path: /h2-console
+  jpa:
+    hibernate:
+     ddl-auto: update
+    show-sql: true  # para las consultas SQL en la consola
+    properties:
       hibernate:
-        ddl-auto: update
-      show-sql: true  # para las consultas SQL en la consola
-
+        dialect: org.hibernate.dialect.H2Dialect
 external:
   api:
     url: "https://restcountries.com/v3.1/name/"
