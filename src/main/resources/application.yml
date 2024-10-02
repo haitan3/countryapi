@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: countryapi
+
+  datasource:
+    url: jdbc:h2:file:./data/testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+    h2:
+      console:
+        enabled: true  # para cceso a la consola H2
+
+    jpa:
+      hibernate:
+        ddl-auto: update
+      show-sql: true  # para las consultas SQL en la consola
+
+external:
+  api:
+    url: "https://restcountries.com/v3.1/name/"

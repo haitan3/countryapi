@@ -1,0 +1,15 @@
+# Ignorar archivos y carpetas generados por Gradle
+.gradle/
+build/
+
+# Ignorar archivos de artefactos
+*.jar
+*.war
+*.class
+
+# Ignorar archivos de configuración del IDE
+.idea/
+*.iml
+
+# Ignorar archivos de registro
+*.log
