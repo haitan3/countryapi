@@ -13,3 +13,5 @@ build/
 
 # Ignorar archivos de registro
 *.log
+# Ignorar la carpeta de persistencia de datos
+/data
