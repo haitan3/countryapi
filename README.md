@@ -29,3 +29,13 @@ Lanzar `docker-compose down`
 - `POST http://localhost:8080//api/v1/data/country`
 - Lista todos los países.
 - `GET http://localhost:8080//api/v1/data/country` 
+
+Para el método POST, no olvidemos la estructura del JSON:<br/>
+{<br/>
+"country": "Bulgaria", <br/>
+"population": 6927288 <br/>
+}
+- Si el país no existe en la base de datos local, el programa obtiene la información de la API externa.
+- En caso de que ese país tampoco exista en la API externa lo guardamos en la BBDD con valores por defecto.
+- Creamos una excepción para el caso, lanzándola y controlándola en los momentos oportunos.
+
