@@ -3,6 +3,7 @@ package com.sdg.countryapi.controller;
 import com.sdg.countryapi.dto.CountryDto;
 import com.sdg.countryapi.exception.CountryNotFoundException;
 import com.sdg.countryapi.service.CountryService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,7 @@ public class CountryController {
     }
 
     @PostMapping
-    ResponseEntity<CountryDto> guardarOActualizarCountry(@RequestBody CountryDto countryDto){
+    ResponseEntity<CountryDto> guardarOActualizarCountry(@Valid @RequestBody CountryDto countryDto){
         CountryDto countryGuardado = service.guardarOActualizarCountry(countryDto);
         return new ResponseEntity<>(countryGuardado, HttpStatus.OK);
     }
