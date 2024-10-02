@@ -30,7 +30,11 @@ Lanzar `docker-compose down`
 - Lista todos los países.
 - `GET http://localhost:8080//api/v1/data/country` 
 
-Para el método POST, no olvidemos la estructura del JSON:<br/>
+Para el método <b>GET</b>, listamos todos los países guardados en nuestra BBDD local.
+- Si no hemos guardado países previamente, la lista estará vacía.
+- Si hemos guardado países previamente, el programa nos devolverá todo el listado, persistiendo los datos en caso de desconectar el programa o desactivando el contenedor
+
+Para el método <b>POST</b>, no olvidemos la estructura del JSON:<br/>
 {<br/>
 "country": "Bulgaria", <br/>
 "population": 6927288 <br/>
