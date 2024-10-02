@@ -1,6 +1,7 @@
 package com.sdg.countryapi.controller;
 
 import com.sdg.countryapi.dto.CountryDto;
+import com.sdg.countryapi.exception.CountryNotFoundException;
 import com.sdg.countryapi.service.CountryService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +29,10 @@ public class CountryController {
     ResponseEntity<List<CountryDto>> listarCountries(){
 
         List<CountryDto> countriesList = service.listarTodosCountries();
+
+        if (countriesList.isEmpty()) {
+            throw new CountryNotFoundException("¡Lista vacía! No se encontraron países en la base de datos.");
+        }
         return new ResponseEntity<>(countriesList, HttpStatus.OK);
     }
 }
