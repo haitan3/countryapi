@@ -1,17 +1,21 @@
 package com.sdg.countryapi.dto;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
 
 public class CountryDto {
     @NotNull(message = "Country no puede ser null")
     private String country;
     @NotNull(message = "Population no puede ser null")
-    @Positive(message = "Population debe ser un numero")
+    @Min(value = 0, message = "Population debe ser un número positivo")
     private Integer population;
 
     public CountryDto(String country, int population) {
         this.country = country;
         this.population = population;
+    }
+
+    public CountryDto() {
+
     }
 
     public String getCountry() {
