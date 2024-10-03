@@ -8,22 +8,22 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.RestTemplate;
+
+import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.reactive.function.client.WebClientResponseException;
+import reactor.core.publisher.Mono;
 
 @Slf4j
 @Component
 public class ExternalCountryClient {
 
-    private final RestTemplate restTemplate;
-
+    private final WebClient webClient;
     private final CountryMapper countryMapper;
 
     @Autowired
-    public ExternalCountryClient(RestTemplate restTemplate, CountryMapper countryMapper) {
-        this.restTemplate = restTemplate;
+    public ExternalCountryClient(WebClient webClient, CountryMapper countryMapper) {
+        this.webClient = webClient;
         this.countryMapper = countryMapper;
     }
 
@@ -41,19 +41,26 @@ public class ExternalCountryClient {
         try {
             log.info("Consultando la API externa en la URL: {}", apiUrl + countryName);
 
-            ResponseEntity< ExternalResponse[]> respuestaApi = restTemplate.getForEntity(apiUrl+countryName, ExternalResponse[].class);
+            Mono<ExternalResponse[]> responseMono = webClient.get()
+                    .uri(apiUrl + countryName)
+                    .retrieve()
+                    .bodyToMono(ExternalResponse[].class);
 
-        if (respuestaApi.getStatusCode()==HttpStatus.OK && respuestaApi.getBody() != null){
+            ExternalResponse[] respuestaApi = responseMono.block();
+
+            if (respuestaApi != null && respuestaApi.length > 0) {
+
             //realizamos el mapping al objeto CountryDto
-            return countryMapper.toCountryDto(respuestaApi.getBody()[0]);
+            return countryMapper.toCountryDto(respuestaApi[0]);
         }
-        }catch (HttpClientErrorException e){
+        }catch (WebClientResponseException e){
             log.error("Error al consultar la API externa: Código de estado: {}, Mensaje: {}", e.getStatusCode(), e.getResponseBodyAsString());
             if (e.getStatusCode() == HttpStatus.NOT_FOUND) {
                 log.error("El Country con nombre {} no fue encontrado en la API externa.", countryName);
                 throw new CountryNotFoundException("El Country no ha sido encontrado en la API externa."); // Lanzar la excepción aquí
             }
         }
+
         throw new CountryNotFoundException("Error al consultar la API externa.");
 
     }

@@ -62,12 +62,13 @@ public class CountryServiceImpl implements CountryService {
 }
 
     public List<CountryDto> listarTodosCountries() {
+        log.info("Se ha llamado al método listarTodosCountries()");
+
         List<Country> countriesRepository= repository.findAll();
 
         return countriesRepository.stream()
                 .map(country -> {
                     Integer population = country.getPopulation();
-                    // Maneja el caso donde population sea null
                     return new CountryDto(
                             country.getCountry(),
                             population != null ? population : 0

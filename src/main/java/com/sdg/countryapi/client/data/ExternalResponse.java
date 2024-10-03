@@ -2,9 +2,12 @@ package com.sdg.countryapi.client.data;
 
 public class ExternalResponse {
     private Name name;
-    private int population;
+    private Integer population;
 
-    public ExternalResponse(Name name, int population) {
+    public ExternalResponse() {
+    }
+
+    public ExternalResponse(Name name, Integer population) {
         this.name = name;
         this.population = population;
     }
@@ -12,6 +15,8 @@ public class ExternalResponse {
     public static class Name {
         private String common;
 
+        public Name() {
+        }
         public Name(String common) {
             this.common = common;
         }
@@ -33,11 +38,11 @@ public class ExternalResponse {
         this.name = name;
     }
 
-    public int getPopulation() {
+    public Integer getPopulation() {
         return population;
     }
 
-    public void setPopulation(int population) {
+    public void setPopulation(Integer population) {
         this.population = population;
     }
 }
