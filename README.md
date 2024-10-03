@@ -8,6 +8,7 @@ Esta es una aplicación que permite gestionar información sobre países utiliza
 
 - Docker
 - Java 17
+- Postman u otra aplicación similar
 ## Lanza la Aplicación con Docker, sin instalaciones ni configuraciones
 
 1. Primera vez para asegurarse de la reconstrucción de imágenes antes que el conteneder <br/>
