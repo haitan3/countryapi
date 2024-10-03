@@ -8,6 +8,19 @@ Esta es una aplicación que permite gestionar información sobre países utiliza
 
 - Docker
 - Java 17
+## Lanza la Aplicación con Docker, sin instalaciones ni configuraciones
+
+1. Primera vez para asegurarse de la reconstrucción de imágenes antes que el conteneder <br/>
+   Lanzar -> `docker-compose up --build`
+
+2. Para apagar el contenedor, teclear crtl + C seguido de cualquier tecla <br/>
+   Lanzar -> `docker-compose down`
+ 
+3. Para volver a lanzar el contenedor y acceder a los mismos registros.
+   <br/>
+   Lanzar -> `docker-compose up`
+
+- Aconsejo lanzar `docker-compose up --build`.
 
 ## Cómo ejecutar
 
@@ -15,14 +28,6 @@ Esta es una aplicación que permite gestionar información sobre países utiliza
 2. Navega al directorio del proyecto.
 3. para construir y ejecutar la aplicación 
 <br/>
-Lanzar -> `docker-compose up --build`
-
-4. Para volver a lanzar el contenedor y acceder a los mismos registros.
-<br/>
-Lanzar `docker-compose up`
-
-5. Para apagar el contenedor <br/>
-Lanzar `docker-compose down`
 
 ## Endpoints
 - Agrega o actualiza un país.
