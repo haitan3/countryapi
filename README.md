@@ -10,14 +10,16 @@ Esta es una aplicación que permite gestionar información sobre países utiliza
 - Java 17
 - Postman u otra aplicación similar
 ## Lanza la Aplicación con Docker, sin instalaciones ni configuraciones
-
-1. Primera vez para asegurarse de la reconstrucción de imágenes antes que el conteneder <br/>
+1. Abrir la terminal <br/>
+   Lanzar -> `./gradlew clean build`<br/>
+   - para más info: "./gradlew build --info"
+2. Primera vez para asegurarse de la reconstrucción de imágenes antes que el conteneder <br/>
    Lanzar -> `docker-compose up --build`
 
-2. Para apagar el contenedor, teclear crtl + C seguido de cualquier tecla <br/>
+3. Para apagar el contenedor, teclear crtl + C seguido de cualquier tecla <br/>
    Lanzar -> `docker-compose down`
  
-3. Para volver a lanzar el contenedor y acceder a los mismos registros.
+4. Para volver a lanzar el contenedor y acceder a los mismos registros.
    <br/>
    Lanzar -> `docker-compose up`
 
