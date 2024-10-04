@@ -2,8 +2,8 @@
 .gradle/
 build/
 
-# Ignorar archivos de artefactos
-*.jar
+# Ignorar todos los .jar excepto gradle-wrapper.jar*.jar
+!gradle/wrapper/gradle-wrapper.jar
 *.war
 *.class
 
