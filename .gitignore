@@ -5,6 +5,7 @@ build/
 # Ignorar todos los .jar excepto gradle-wrapper.jar
 *.jar
 !gradle/wrapper/gradle-wrapper.jar
+!gradlew
 *.war
 *.class
 
