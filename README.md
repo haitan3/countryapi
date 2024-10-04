@@ -12,17 +12,18 @@ Esta es una aplicación que permite gestionar información sobre países utiliza
 ## Lanza la Aplicación con Docker, sin instalaciones ni configuraciones
 
 1. Primera vez para asegurarse de la reconstrucción de imágenes antes que el conteneder <br/>
-   Lanzar -> `docker-compose up --build`
+   - Lanzar -> `docker-compose up --build`
 <i>si falla puedes lanzar el comando `docker-compose up --build --force-recreate` </i>
-2. Para apagar el contenedor, teclear crtl + C seguido de cualquier tecla <br/>
-   Lanzar -> `docker-compose down`
+2. Para apagar el contenedor, teclear crtl + C, esperar a que el contenedor sea parado y seguido presionar cualquier tecla <br/>
+   - Lanzar -> `docker-compose down`
  
 3.  Para volver a lanzar el contenedor y acceder a los mismos registros.
    <br/>
-   Lanzar -> `docker-compose up`
+   - Lanzar -> `docker-compose up`
 
-- Aconsejo lanzar `docker-compose up --build`.
-
+Aconsejo lanzar `docker-compose up --build`.
+- Tuve un pequeño problema con el comando `./gradlew clean build` porque git me cambiada el formato Unix(LF) a Windows(CRLF)
+  - Si ocurre lanzar `git config --global core.autocrlf input` (aunque el fichero gradlew está en el repositorio en formato Unix LF)
 ## Cómo ejecutar
 
 1. Clona el repositorio. lanzar siguiente comando -> git clone https://github.com/haitan3/countryapi.git
